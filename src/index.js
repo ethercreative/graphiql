@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GraphiQL from "graphiql";
+import { parse, print } from "graphql";
 import "graphiql/graphiql.css";
 import registerServiceWorker from './registerServiceWorker';
 
@@ -60,7 +61,6 @@ class CustomGraphiQL extends React.Component {
 		const editor = this.graphiql.getQueryEditor();
 		const currentText = editor.getValue();
 		if (currentText.trim() === "") return;
-		const { parse, print } = require('graphql');
 		const prettyText = print(parse(currentText));
 		editor.setValue(prettyText);
 	};
